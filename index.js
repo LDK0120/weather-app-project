@@ -49,7 +49,7 @@ function searchedCityCurrentWeather(event) {
   }
 
   let unit = "metric";
-  let apiKey = '77f5bbd678dbc6585fd33ab51e79f061';
+  let apiKey = 'da8a5c73715706818affa5eb294dee2d';
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getTemp);
 }
