@@ -11,23 +11,6 @@ currentDay.innerHTML = days[now.getDay()];
 currentHour.innerHTML = ("0"+now.getHours()).slice(-2); //this will add 0 at the beginning. examples: 1pm -> 01pm. 12pm -> 012pm.  Then, it will take the last two digits (01pm -> 01pm. 012pm -> 12pm).
 currentMinute.innerHTML = ("0"+now.getMinutes()).slice(-2);
 
-// function switchUnit(event) {
-//   event.preventDefault();
-//   let shown = document.querySelector("#currentUnit");
-//   let hidden = document.querySelector("#hiddenUnit");
-
-//   if (hidden.innerHTML === "°F") {
-//       shown.innerHTML = "°F";
-//       hidden.innerHTML = "°C";
-//   } else {
-//     shown.innerHTML = "°C";
-//     hidden.innerHTML = "°F";
-//   }
-// }
-// let hidden = document.querySelector("#hiddenUnit");
-// hidden.addEventListener("click", switchUnit);
-
-
 
 //Display searched city weather
 function searchedCityCurrentWeather(event) {
@@ -49,19 +32,13 @@ function searchedCityCurrentWeather(event) {
   }
 
   let unit = "metric";
-  let apiKey = 'da8a5c73715706818affa5eb294dee2d';
+  let apiKey = '77f5bbd678dbc6585fd33ab51e79f061';
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getTemp);
 }
 
 let form = document.querySelector("#city-search-form");
 form.addEventListener("submit", searchedCityCurrentWeather);
-
-
-
-
-
-
 
 
 function currentWeather(event) {
