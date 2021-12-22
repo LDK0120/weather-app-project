@@ -106,3 +106,7 @@ form {
 #city-heading-left:first-letter {
   text-transform: capitalize;
 }
+
+#open-source-link {
+  text-align: center;
+}
