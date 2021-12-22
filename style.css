@@ -101,7 +101,14 @@ form {
 
 #currentUnit,
 #hiddenUnit {
+  position: relative;
+  top: -10px;
   text-decoration: none;
+  font-size: 18px;
+}
+
+#currentUnit {
+  font-weight: bolder;
 }
 
 #city-heading-left:first-letter {

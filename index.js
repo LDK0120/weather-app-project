@@ -22,13 +22,15 @@ function searchedCityCurrentWeather(event) {
   
   let temp = Math.round(data.data.main.temp);
   let description = data.data.weather[0].description;
-
+  let icon = document.querySelector(".weather-emoji-today");
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.data.weather[0].icon}@2x.png`);
   let currentTemp = document.querySelector("#current-temperature");
   currentTemp.innerHTML = temp;
   let weatherDescription = document.querySelector("#description");
   weatherDescription.innerHTML = description;
   let cityName = document.querySelector("#city-heading-left");
   cityName.innerHTML = city;
+
   }
 
   let unit = "metric";
