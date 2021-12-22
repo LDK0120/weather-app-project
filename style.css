@@ -1,0 +1,108 @@
+h2,
+h4,
+p,
+span {
+  color: #7e84ad;
+}
+
+li {
+  list-style: none;
+  font-size: 35px;
+}
+
+form {
+  display: inline-block;
+}
+
+.line {
+  border: 1.5px solid #7e84ad;
+  border-radius: 5px;
+}
+
+.button {
+  background-color: #7e84ad;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 32px;
+  transition: all 200ms ease-in-out;
+  font-size: larger;
+}
+
+.button:hover {
+  background-color: #d7daef;
+  color: #7e84ad;
+}
+
+.current-button {
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 11px 17px;
+  font-size: larger;
+  transition: all 200ms ease-in-out;
+}
+
+.current-button:hover {
+  background-color: #d7daef;
+  color: blueviolet;
+}
+
+.card {
+  margin: 20px auto;
+}
+
+.content {
+  font-family: "Roboto", sans-serif;
+}
+
+.emoji {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.forecast {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.weather-emoji-today {
+  float: left;
+  margin: 10px;
+}
+
+.current-location,
+.current-date-time {
+  text-align: right;
+}
+
+.temperature-forecast {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.forecast-day {
+  text-align: center;
+}
+
+.weather-description-today {
+  color: black;
+}
+
+#currentUnit,
+#hiddenUnit {
+  text-decoration: none;
+}
+
+#city-heading-left:first-letter {
+  text-transform: capitalize;
+}
