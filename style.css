@@ -32,18 +32,18 @@ form {
 }
 
 .button {
-  background-color: blueviolet;
+  background-color: rgb(42, 103, 196);
   color: #fff;
   border: none;
   border-radius: 30px;
-  padding: 10px 32px;
+  padding: 8px 32px;
   transition: all 200ms ease-in-out;
   font-size: larger;
 }
 
 .button:hover {
   background-color: #d7daef;
-  color: blueviolet;
+  color: rgb(42, 103, 196);
 }
 
 .current-button {
