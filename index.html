@@ -27,12 +27,14 @@
                 <div>
                     <form id="city-search-form">
                         <input type="text" placeholder="Enter city" class="search-box" size="30" autofocus
-                            id="search-input" />
+                            autocomplete="off" id="search-input" />
                         <input type="submit" value="Search" value="Search" class="button" id="searchButton" />
                     </form>
+                    <!--
                     <form id="current-city-search-form">
                         <button class="current-button" id="currentButton">Current Location</button>
                     </form>
+                -->
                 </div>
 
 
@@ -43,24 +45,26 @@
                         <img src="" class="weather-emoji-today" />
                         <ul class="weather-description-today">
                             <li><span class="weather-description-today" id="current-temperature"></span><span id="units"><a href="#"
-                                    class="weather-description-today" id="currentUnit"> °C</a> | <a href="#"
-                                    class="weather-description-today" id="hiddenUnit">°F</a></span></li>
+                                    class="weather-description-today active" id="celciusUnit"> °C</a> | <a href="#"
+                                    class="weather-description-today" id="farenheitUnit">°F</a></span></li>
                             <li id="description"></li>
+                            <li class="wind">Wind: <span class="windSpeed"></span> km/h</li>
                         </ul>
                     </div>
 
                     <div class="col-4">
-                        <h2 class="current-location" id="city-heading-right"></h2>
-                        <h2 class="current-date-time" id="current-day"></h2>
-                        <h2 class="current-date-time">
+                        <ul>
+                        <li class="current-date-time" id="current-day"></li>
+                        <li class="current-date-time">
                             <span class="current-date-time" id="current-hour"></span>:
                             <span class="current-date-time" id="current-minute"></span>pm
-                        </h2>
+                        </li>
+                        </ul>
                     </div>
                 </div>
 
-
-                <h4 class="forecast">5 day forecast</h4>
+<!--
+                 <h4 class="forecast">5 day forecast</h4>
                 <div class="row forecast-day">
                     <div class="col">
                         <h4>Wednesday</h4>
@@ -91,21 +95,22 @@
 
                 <div class="row temperature-forecast">
                     <div class="col">
-                        <p>65°F</p>
+                        <p>10 °C | 65 °F</p>
                     </div>
                     <div class="col">
-                        <p>55°F</p>
+                        <p>10 °C | 65 °F</p>
                     </div>
                     <div class="col">
-                        <p>60°F</p>
+                        <p>10 °C | 65 °F</p>
                     </div>
                     <div class="col">
-                        <p>63°F</p>
+                        <p>10 °C | 65 °F</p>
                     </div>
                     <div class="col">
-                        <p>61°F</p>
+                        <p>10 °C | 65 °F</p>
                     </div>
                 </div>
+            -->
             </div>
         </div>
     </div>
