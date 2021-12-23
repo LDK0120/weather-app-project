@@ -78,10 +78,18 @@ form {
   margin: 0 auto;
 }
 
-.forecast {
-  margin-top: 20px;
+.weather-forecast {
+  padding-top: 100px;
   margin-bottom: 20px;
   margin-left: 25px;
+}
+
+.forecast-day-one {
+  text-align: center;
+}
+
+.forecast-day-one-icon {
+  margin: 10px auto;
 }
 
 .search {
