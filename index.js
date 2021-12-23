@@ -48,7 +48,7 @@ form.addEventListener("submit", searchedCityCurrentWeather);
 
 function displayFarenheitUnit (event) {
     event.preventDefault();
-    let farenheitTemperature = (celciusTemperature * 9/5) + 32;
+    let farenheitTemperature = Math.round((celciusTemperature * 9/5) + 32);
     let currentTemperature = document.querySelector("#current-temperature");
     currentTemperature.innerHTML = farenheitTemperature;
 
