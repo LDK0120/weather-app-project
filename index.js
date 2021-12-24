@@ -77,3 +77,24 @@ cTemperature.addEventListener("click", displayCelciusUnit);
 
 
 searchedCityCurrentWeather("New York");
+
+function displayForecast() {
+
+  let totalColumn = `<div class="row">`;
+
+  let forecastDays = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+   let forecast = document.querySelector("#weatherForecast");
+   
+  forecastDays.forEach(function(day) {
+    totalColumn = totalColumn + `<div class="col-2 forecast-day-one">
+                  <div class="forecast-day"><h4>${day}</h4></div>
+                  <div class="forecast-icon"><img src="images/partly_cloudy.png" alt=""></div>
+                  <div class="forecast-temperature"><h4><span class="max-temp">16 ° </span><span class="min-temp"> 12°</span></h4></div>
+                </div>`;
+  });
+   forecast.innerHTML = totalColumn + `</div>`;
+}
+
+displayForecast();
+

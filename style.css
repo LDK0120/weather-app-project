@@ -80,17 +80,16 @@ form {
 
 .weather-forecast {
   margin-top: 30px;
-  margin-bottom: 20px;
-  margin-left: 25px;
+  text-align: center;
 }
 
-.forecast-day-one {
+.forecast-day {
   text-align: center;
   color: #7e84ad;
-  font-size: 16px;
+  font-size: 13px;
 }
 
-.forecast-day-one-icon {
+.forecast-icon {
   margin: 20px auto;
 }
 
@@ -107,15 +106,6 @@ form {
 .current-date-time {
   text-align: right;
   font-size: 18px;
-}
-
-.temperature-forecast {
-  text-align: center;
-  padding-top: 5px;
-}
-
-.forecast-day {
-  text-align: center;
 }
 
 .max-temp,
