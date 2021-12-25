@@ -31,6 +31,12 @@ function getTemp(data){
   weatherDescription.innerHTML = description;
   let windSpeed = document.querySelector(".windSpeed");
   windSpeed.innerHTML = data.data.wind.speed;
+
+  let lon = data.data.coord.lon;
+  let lat = data.data.coord.lat;
+  let forecastApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=77f5bbd678dbc6585fd33ab51e79f061&units=metric`;
+  
+  axios.get(forecastApi).then(displayForecast);
   }
 
 function getWeather(event){
@@ -78,7 +84,8 @@ cTemperature.addEventListener("click", displayCelciusUnit);
 
 searchedCityCurrentWeather("New York");
 
-function displayForecast() {
+function displayForecast(forecastData) {
+  console.log(forecastData);
 
   let totalColumn = `<div class="row">`;
 
@@ -95,6 +102,3 @@ function displayForecast() {
   });
    forecast.innerHTML = totalColumn + `</div>`;
 }
-
-displayForecast();
-
