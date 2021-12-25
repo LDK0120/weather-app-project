@@ -85,20 +85,23 @@ cTemperature.addEventListener("click", displayCelciusUnit);
 searchedCityCurrentWeather("New York");
 
 function displayForecast(forecastData) {
-  console.log(forecastData);
-
+  let forecastdata = forecastData.data.daily;
   let totalColumn = `<div class="row">`;
+  let forecast = document.querySelector("#weatherForecast");
+  let listOfForecastDays = [];
 
-  let forecastDays = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  for (i = 0; i < 6; i++) {
+      listOfForecastDays.push(forecastData.data.daily[i]);
+  }
 
-   let forecast = document.querySelector("#weatherForecast");
-   
-  forecastDays.forEach(function(day) {
-    totalColumn = totalColumn + `<div class="col-2 forecast-day-one">
-                  <div class="forecast-day"><h4>${day}</h4></div>
-                  <div class="forecast-icon"><img src="images/partly_cloudy.png" alt=""></div>
-                  <div class="forecast-temperature"><h4><span class="max-temp">16 ° </span><span class="min-temp"> 12°</span></h4></div>
+  listOfForecastDays.forEach(function(listItem) {
+        totalColumn = totalColumn + `<div class="col-2 forecast-day-one">
+                  <div class="forecast-day"><h4>${listItem.dt}</h4></div>
+                  <div class="forecast-icon"><img src="http://openweathermap.org/img/wn/${listItem.weather[0].icon}@2x.png" alt=""></div>
+                  <div class="forecast-temperature"><h4><span class="max-temp">${Math.round(listItem.temp.max)}° </span><span class="min-temp"> ${Math.round(listItem.temp.min)}°</span></h4></div>
                 </div>`;
+
   });
+  
    forecast.innerHTML = totalColumn + `</div>`;
 }
