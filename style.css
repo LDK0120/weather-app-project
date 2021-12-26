@@ -110,7 +110,7 @@ form {
 
 .max-temp,
 .min-temp {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .min-temp {
@@ -123,6 +123,14 @@ form {
 
 .wind {
   font-size: 18px;
+}
+
+.unit {
+  font-size: 20px;
+  color: black;
+  position: relative;
+  top: -15px;
+  font-weight: bold;
 }
 
 #celciusUnit,
@@ -146,9 +154,10 @@ form {
   margin-bottom: 25px;
 }
 
-#current-temperature {
-  font-size: 40px;
+.current-temperature {
+  font-size: 43px;
   font-weight: bold;
+  color: black;
 }
 
 #description {

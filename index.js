@@ -1,32 +1,24 @@
 let now = new Date();
+let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-let currentDay = document.querySelector("#current-day");
-let currentHour = document.querySelector("#current-hour");
-let currentMinute = document.querySelector("#current-minute");
-
-currentDay.innerHTML = days[now.getDay()];
-currentHour.innerHTML = ("0"+now.getHours()).slice(-2); //this will add 0 at the beginning. examples: 1pm -> 01pm. 12pm -> 012pm.  Then, it will take the last two digits (01pm -> 01pm. 012pm -> 12pm).
-currentMinute.innerHTML = ("0"+now.getMinutes()).slice(-2);
-
+//get searched city weather
 function searchedCityCurrentWeather(event) {
   let city = event;
   let defaultCityName = document.querySelector("#city-heading-left");
   defaultCityName.innerHTML = city;
-  let unit = "metric";
+  let unit = "imperial";
   let apiKey = '77f5bbd678dbc6585fd33ab51e79f061';
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getTemp);
 }
 
 function getTemp(data){
-  celciusTemperature = Math.round(data.data.main.temp);
+  temperature = Math.round(data.data.main.temp);
   let description = data.data.weather[0].description;
   let icon = document.querySelector(".weather-emoji-today");
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.data.weather[0].icon}@2x.png`);
-  let currentTemp = document.querySelector("#current-temperature");
-  currentTemp.innerHTML = celciusTemperature;
+  let currentTemp = document.querySelector(".current-temperature");
+  currentTemp.innerHTML = temperature;
   let weatherDescription = document.querySelector("#description");
   weatherDescription.innerHTML = description;
   let windSpeed = document.querySelector(".windSpeed");
@@ -34,7 +26,7 @@ function getTemp(data){
 
   let lon = data.data.coord.lon;
   let lat = data.data.coord.lat;
-  let forecastApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=77f5bbd678dbc6585fd33ab51e79f061&units=metric`;
+  let forecastApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=77f5bbd678dbc6585fd33ab51e79f061&units=imperial`;
   
   axios.get(forecastApi).then(displayForecast);
   }
@@ -48,41 +40,25 @@ function getWeather(event){
 
 
   let key = '77f5bbd678dbc6585fd33ab51e79f061';
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${key}&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${key}&units=imperial`;
 
   axios.get(url).then(getTemp);
   }
 
-let celciusTemperature = null;
-
 let form = document.querySelector("#city-search-form");
 form.addEventListener("submit", getWeather);
 
-//Convert temperature units
-function displayFarenheitUnit (event) {
-    event.preventDefault();
-    let farenheitTemperature = Math.round((celciusTemperature * 9/5) + 32);
-    let currentTemperature = document.querySelector("#current-temperature");
-    currentTemperature.innerHTML = farenheitTemperature;
-    fTemperature.classList.add("active");
-    cTemperature.classList.remove("active");
-}
-
-function displayCelciusUnit (event) {
-    event.preventDefault();
-    let currentTemperature = document.querySelector("#current-temperature");
-    currentTemperature.innerHTML = celciusTemperature;
-    fTemperature.classList.remove("active");
-    cTemperature.classList.add("active");
-}
-
-let fTemperature = document.querySelector("#farenheitUnit");
-let cTemperature = document.querySelector("#celciusUnit");
-fTemperature.addEventListener("click", displayFarenheitUnit);
-cTemperature.addEventListener("click", displayCelciusUnit);
-
-
 searchedCityCurrentWeather("New York");
+
+
+//weather forecast for next 6 days
+function convertDt (dt) {
+  let entireDateInfo = new Date(dt * 1000);
+  let dayInNumeric = entireDateInfo.getDay();
+  let exactDay = days[dayInNumeric];
+  
+  return exactDay;
+}
 
 function displayForecast(forecastData) {
   let forecastdata = forecastData.data.daily;
@@ -90,17 +66,29 @@ function displayForecast(forecastData) {
   let forecast = document.querySelector("#weatherForecast");
   let listOfForecastDays = [];
 
-  for (i = 0; i < 6; i++) {
+  let currentDayDt = forecastData.data.current.dt;
+  let now = new Date(currentDayDt * 1000);
+  let currentDay = document.querySelector("#current-day");
+  let currentHour = document.querySelector("#current-hour");
+  let currentMinute = document.querySelector("#current-minute");
+
+  let listOfDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  currentDay.innerHTML = listOfDays[now.getDay()];
+  currentHour.innerHTML = ("0"+now.getHours()).slice(-2);
+  currentMinute.innerHTML = ("0"+now.getMinutes()).slice(-2); 
+
+
+  for (i = 1; i < 7; i++) {
       listOfForecastDays.push(forecastData.data.daily[i]);
   }
 
   listOfForecastDays.forEach(function(listItem) {
         totalColumn = totalColumn + `<div class="col-2 forecast-day-one">
-                  <div class="forecast-day"><h4>${listItem.dt}</h4></div>
+                  <div class="forecast-day"><h4>${convertDt(listItem.dt)}</h4></div>
                   <div class="forecast-icon"><img src="http://openweathermap.org/img/wn/${listItem.weather[0].icon}@2x.png" alt=""></div>
                   <div class="forecast-temperature"><h4><span class="max-temp">${Math.round(listItem.temp.max)}° </span><span class="min-temp"> ${Math.round(listItem.temp.min)}°</span></h4></div>
                 </div>`;
-
   });
   
    forecast.innerHTML = totalColumn + `</div>`;
