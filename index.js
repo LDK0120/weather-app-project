@@ -13,10 +13,41 @@ function searchedCityCurrentWeather(event) {
 }
 
 function getTemp(data){
+
+  let image = "";
   temperature = Math.round(data.data.main.temp);
-  let description = data.data.weather[0].description;
-  let icon = document.querySelector(".weather-emoji-today");
-  icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.data.weather[0].icon}@2x.png`);
+  let description = data.data.weather[0].main;
+  let icon = document.querySelector("#today-weather-image");
+
+
+  if (description === "Thunderstorm" ) {
+    image = "thunder.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else if (description === "Clear") {
+    image = "day.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else if (description === "Snow") {
+    image = "snowy-6.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else if (description === "Drizzle") {
+    image = "rainy-1.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else if (description === "Rain") {
+    image = "rainy-5.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else if (description === "Clouds") {
+    image = "cloudy.svg";
+      icon.setAttribute("src", `images/${image}`);
+
+  } else {
+    icon.setAttribute("src", "http://openweathermap.org/img/wn/50d@2x.png");
+  }
+
   let currentTemp = document.querySelector(".current-temperature");
   currentTemp.innerHTML = temperature;
   let weatherDescription = document.querySelector("#description");
@@ -49,9 +80,7 @@ let form = document.querySelector("#city-search-form");
 form.addEventListener("submit", getWeather);
 
 searchedCityCurrentWeather("New York");
-
-
-//weather forecast for next 6 days
+  
 function convertDt (dt) {
   let entireDateInfo = new Date(dt * 1000);
   let dayInNumeric = entireDateInfo.getDay();
@@ -60,6 +89,7 @@ function convertDt (dt) {
   return exactDay;
 }
 
+//weather forecast for next 6 days
 function displayForecast(forecastData) {
   let forecastdata = forecastData.data.daily;
   let totalColumn = `<div class="row">`;
@@ -76,20 +106,35 @@ function displayForecast(forecastData) {
 
   currentDay.innerHTML = listOfDays[now.getDay()];
   currentHour.innerHTML = ("0"+now.getHours()).slice(-2);
-  currentMinute.innerHTML = ("0"+now.getMinutes()).slice(-2); 
-
+  currentMinute.innerHTML = ("0"+now.getMinutes()).slice(-2);
 
   for (i = 1; i < 7; i++) {
       listOfForecastDays.push(forecastData.data.daily[i]);
   }
-
   listOfForecastDays.forEach(function(listItem) {
+    let description = listItem.weather[0].main;
+  if (description === "Thunderstorm" ) {
+    description = "images/thunder.svg";
+  } else if (description === "Clear") {
+    description = "images/day.svg";
+  } else if (description === "Snow") {
+    description = "images/snowy-6.svg";
+  } else if (description === "Drizzle") {
+    description = "images/rainy-1.svg";
+  } else if (description === "Rain") {
+    description = "images/rainy-5.svg";
+  } else if (description === "Clouds") {
+    description = "images/cloudy.svg";
+  } else {
+    description = "http://openweathermap.org/img/wn/50d@2x.png";
+  }
         totalColumn = totalColumn + `<div class="col-2 forecast-day-one">
                   <div class="forecast-day"><h4>${convertDt(listItem.dt)}</h4></div>
-                  <div class="forecast-icon"><img src="http://openweathermap.org/img/wn/${listItem.weather[0].icon}@2x.png" alt=""></div>
+                  <object type="image/svg+xml" data="image.svg">
+                        <img id="forecast-icon" src=${description} />
+                  </object>
                   <div class="forecast-temperature"><h4><span class="max-temp">${Math.round(listItem.temp.max)}° </span><span class="min-temp"> ${Math.round(listItem.temp.min)}°</span></h4></div>
                 </div>`;
   });
-  
    forecast.innerHTML = totalColumn + `</div>`;
 }

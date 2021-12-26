@@ -27,7 +27,7 @@
                 <div>
                     <form id="city-search-form">
                         <input type="text" placeholder="Enter city" class="search-box" size="30" autofocus
-                            autocomplete="off" id="search-input" />
+                            autocomplete="off" id="search-input" required />
                         <input type="submit" value="Search" value="Search" class="button" id="searchButton" />
                     </form>
                     
@@ -38,16 +38,19 @@
                 <div class="row">
                     <div class="col-8">
                         <h1 id="city-heading-left"></h1>
-                        <img src="" class="weather-emoji-today" />
+                        <object type="image/svg+xml" data="image.svg">
+                        <img id="today-weather-image" src="" />
+                        </object>
                         <ul class="weather-description-today">
                             <li class="weather-description-today"><span class="current-temperature"></span><span class="unit"> °F</span></li>
                             <li id="description"></li>
-                            <li class="wind">Wind: <span class="windSpeed"></span> km/h</li>
+                            <li class="wind">Wind: <span class="windSpeed"></span> km/h </li>
                         </ul>
                     </div>
 
                     <div class="col-4">
                         <ul>
+                        <li class="current-date-time">Last updated:</li>
                         <li class="current-date-time" id="current-day"></li>
                         <li class="current-date-time">
                             <span class="current-date-time" id="current-hour"></span>:

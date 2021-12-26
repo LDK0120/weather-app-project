@@ -3,7 +3,7 @@ h4,
 p,
 span,
 li {
-  color: #7e84ad;
+  color: #c36cbc;
 }
 
 li {
@@ -16,23 +16,18 @@ form {
 }
 
 .active {
-  color: black;
+  color: #533153;
   font-weight: bolder;
   cursor: default;
 }
 
 .active:hover {
-  color: black;
+  color: #533153;
   text-decoration: none;
 }
 
-.line {
-  border: 1.5px solid #7e84ad;
-  border-radius: 5px;
-}
-
 .button {
-  background-color: rgb(42, 103, 196);
+  background-color: #c36cbc;
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -42,23 +37,9 @@ form {
 }
 
 .button:hover {
-  background-color: #d7daef;
-  color: rgb(42, 103, 196);
-}
-
-.current-button {
-  background-color: blueviolet;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 11px 17px;
-  font-size: larger;
-  transition: all 200ms ease-in-out;
-}
-
-.current-button:hover {
-  background-color: #d7daef;
-  color: blueviolet;
+  background-color: #fcfcfc;
+  color: #c36cbc;
+  border: 1px solid #c36cbc;
 }
 
 .card {
@@ -71,21 +52,13 @@ form {
   font-family: "Roboto", sans-serif;
 }
 
-.emoji {
-  max-width: 100px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .weather-forecast {
-  margin-top: 30px;
+  margin-top: 10px;
   text-align: center;
 }
 
 .forecast-day {
   text-align: center;
-  color: #7e84ad;
   font-size: 13px;
 }
 
@@ -98,11 +71,6 @@ form {
   margin-bottom: 20px;
 }
 
-.weather-emoji-today {
-  float: left;
-  margin: 10px;
-}
-
 .current-date-time {
   text-align: right;
   font-size: 18px;
@@ -113,37 +81,34 @@ form {
   font-size: 15px;
 }
 
-.min-temp {
-  opacity: 0.6;
-}
-
-.weather-description-today {
-  color: black;
-}
-
-.wind {
-  font-size: 18px;
-}
-
-.unit {
-  font-size: 20px;
-  color: black;
-  position: relative;
-  top: -15px;
+.max-temp {
   font-weight: bold;
 }
 
-#celciusUnit,
-#farenheitUnit {
+.min-temp {
+  opacity: 0.8;
+}
+
+.weather-description-today {
+  color: #533153;
+}
+
+.wind {
+  font-size: 21px;
+}
+
+.unit {
+  font-size: 23px;
+  color: #533153;
   position: relative;
   top: -15px;
-  text-decoration: none;
-  font-size: 18px;
+  font-weight: bold;
 }
 
 #city-heading-left {
   font-size: 40px;
   font-weight: bold;
+  color: #533153;
 }
 
 #city-heading-left:first-letter {
@@ -155,16 +120,28 @@ form {
 }
 
 .current-temperature {
-  font-size: 43px;
+  font-size: 45px;
   font-weight: bold;
-  color: black;
+  color: #533153;
 }
 
 #description {
-  font-size: 18px;
+  font-size: 21px;
 }
 
 #open-source-link {
   text-align: center;
   font-size: smaller;
+}
+
+#today-weather-image {
+  height: 150px;
+  width: 150px;
+  float: left;
+  margin: 10px;
+}
+
+#forecast-icon {
+  height: 80px;
+  width: 80px;
 }
